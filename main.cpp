@@ -1,58 +1,103 @@
 #include <iostream>
-#include <fstream>
 #include <stdlib.h>
+#include <fstream>
+#include <string>
+#include <conio.h>
 
 using namespace std;
-string odpowiedz[5], login, haslo, hobby, typdanych, dane;
-int nr_linii=1, wybor, wybor2;
+int *baza, wybor, ilvl, cena, ile, x=0, ilosc, stackow, wybor2, nr_linii, l;
+string nazwa;
+int linia(int line)
+{
+    line+3;
+}
 int main()
 {
-    fstream baza_danych;
-    baza_danych.open("bazadanych.txt", ios::out);
-    if( baza_danych.good() == false )
+for(;;)
+{
+cout <<"Witaj w symulatorze domu aukcyjnego"<<endl;
+cout <<"Wybierz opcje"<<endl;
+cout <<"1.Dodaj Pozycje"<<endl;
+cout <<"2.Odczytaj Pozycje"<<endl;
+cout <<"3.Informacje o autorze"<<endl;
+cout <<"Wyjdz z programu"<<endl;
+cin >> wybor;
+fstream baza_danych;
+baza_danych.open("bazadanych.txt", ios::app| ios::in);
+    switch(wybor)
     {
-        cout << "Brak podanego pliku, w przypadku wybrania opcji pierwszej plik zostanie utworzony.";
-        getchar();
-        exit( 1 );
-    }
-    cout << "1.Prosze wybrac jedna z opcji" << endl;
-    cout << "2.Zapis do pliku" <<endl;
-    cin >>wybor;
-            switch(wybor)
+
+        case 1:
             {
-            case 1: cout << "Wybrales opcje zapis do pliku";
-            cout << "Prosze podac login :" << endl;
-            cin >>login;
-            baza_danych<<login<<endl;
-            cout << "Prosze podac haslo :" <<endl;
-            cin >>haslo;
-            baza_danych<<haslo<<endl;
-            cout << "Prosze podac hobby :" <<endl;
-            cin >>hobby;
-            baza_danych<<hobby<<endl;
+
             system("cls");
-            cout << "Dane zostaly poprawnie wpisane do pliku"<<endl;
-            cout << "Czy chcesz dodac inne dane?"<<endl;
-            cout << "1.Tak" <<endl;
-            cout << "2.Nie" <<endl;
-                switch(wybor2)
+            cout <<"Wybrales opcje : Dodaj Pozycje"<<endl;
+            cout <<"Wybierz opcje:"<<endl;
+            cout <<"1.Dodawanie itemow niestackowalnych"<<endl;
+            cout <<"2.Dodawanie itemow stackowalnych"<<endl;
+            cin >>wybor2;
+            wybor2=wybor2+3;
+            switch(wybor2)
+            break;
+            {
+                case 4:
+
+                cout <<"Ile przedmiotow chcesz dodac? "<<endl;
+                cin >>ile;
+                baza= new int[ile];
+                do
                 {
-                case 1:
-                cout <<"Nazwij Typ danych"<<endl;
-                cin >> typdanych;
-                cout <<"Typ danych pozytywnie dodany"<<endl;
-                cout << "Prosze o podanie wartosci :"<<endl;
-                cin >>dane;
-                baza_danych<<dane<<endl;
+                cout <<"Prosze podac nazwe przedmiotu"<<endl;
+                getline(cin, nazwa);
+                cout <<"Prosze podac Item Level przedmiotu"<<endl;
+                cin >>ilvl;
+                cout <<"Prosze podac cene"<<endl;
+                cin >>cena;
+                cout <<"nazwa to: "<<nazwa<<" ilvl to: "<<ilvl<<"cena to: "<<cena<<endl;
+                x++;
+                system("cls");
+                baza_danych<<nazwa<<endl;
+                baza_danych<<ilvl<<endl;
+                baza_danych<<cena<<endl;
+                }while(x<ile);
                 break;
-                case 2:
-                cout <<"W takim razie zycze milego dnia "<<endl;
-                break;
-                }
-            break;
-            case 2: cout << "Wybrales opcje odczyt z pliku";
-            break;
+
+                case 5:
+                cout <<"Wybrano opcje itemow stackowalnych"<<endl;
+                cout<<"Prosze podac nazwe przedmiotu";
+                getline(cin, nazwa);
+
             }
-    baza_danych.close();
-    return 0;
+        case 2:
+            do
+            {
+                cout <<"Wyswietlanie"<<endl;
+                getline(baza_danych, nazwa);
+                getline(baza_danych, ilvl);
+                cout <<"Nazwa przedmiotu: "<<nazwa<<endl;
+                cout <<"Linia:" <<linia(nr_linii);
+                break;
+                switch(nr_linii)
+                {
+                case 1: cout <<"hej";
+                case 2: cout <<
+
+                }
+                nr_linii++;
+                break;
+            }while(1<2);
+            break;
+
+        case 3:
+            system("cls");
+            cout <<"Program stworzony przez Dawid ,,Kirialaa'' Smaga"<<endl;
+            break;
+        case 0:
+            exit(0);
+
+    }
+            baza_danych.close();
+return 0;
+}
+}
 }
