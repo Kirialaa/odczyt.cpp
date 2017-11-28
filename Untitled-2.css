@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+ul.disc
+{
+	list-style: disc;
+}
+ul.circle
+{
+list-style: circle;
+}
+ul.square
+{
+	list-style-image: url();
+}
+ul.decimal
+{
+	list-style: decimal;
+}
+ul.lowerroman
+{
+	list-style: lower-roman
+}
+ul.upperroman
+{
+	list-style: upper-roman
+}
+ul.loweralpha
+{
+	list-style: lower-alpha;
+}
+ul.upperalpha
+{
+	list-style: upper-alpha
+}
+ul.none
+{
+	list-style: none
+}
